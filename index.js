@@ -1,18 +1,15 @@
-let number = 5;
+let number = [5, 0];
 
 partition(number);
 
 function partition(number) {
   let m = 0;
   let output = [];
-  createSummond(number - 1, m + 1, output);
+  let a = [2, 6, 4, 3];
+  console.log(a.pop());
+  console.log(a);
+  createSummond(number[0] - 1, m + 1, output);
   console.log(JSON.stringify(output));
-  output.forEach((elm, index) => {
-    let k = 0;
-    let output2 = [];
-    createSummond(elm[0] - 1, k + 1, output2);
-    console.log(JSON.stringify(output2));
-  });
 }
 
 function createSummond(number, m, output) {
@@ -20,7 +17,12 @@ function createSummond(number, m, output) {
     output.push([number, m]);
     return createSummond(number - 1, m + 1, output);
   } else {
-    return 1;
+    output.forEach((elm, index) => {
+      let k = 0;
+      let output2 = [];
+      return createSummond(elm[0] - 1, k + 1, output2);
+    });
+    // return 1;
   }
 }
 
