@@ -1,19 +1,24 @@
-let number = 7;
+let number = 5;
 
-partition(7);
+partition(number);
 
 function partition(number) {
   let m = 0;
-  let result = [];
-  createSummond(number, m);
+  let output = [];
+  createSummond(number - 1, m + 1, output);
+  console.log(JSON.stringify(output));
+  output.forEach((elm, index) => {
+    let k = 0;
+    let output2 = [];
+    createSummond(elm[0] - 1, k + 1, output2);
+    console.log(JSON.stringify(output2));
+  });
 }
 
-function createSummond(number, m) {
-  // number = number - 1;
-  m = m + 1;
-  if (number >= 0) {
-    console.log([number, m]);
-    return number - createSummond(number - 1, m);
+function createSummond(number, m, output) {
+  if (number >= m) {
+    output.push([number, m]);
+    return createSummond(number - 1, m + 1, output);
   } else {
     return 1;
   }
